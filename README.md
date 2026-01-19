@@ -1,4 +1,4 @@
-# #Part 1-
+ Part 1-
 
 
 from decimal import Decimal
@@ -52,12 +52,8 @@ def create_product():
         "product_id": product.id
     }
  I change the many thinks like I have add decimal, there us no sky, request.json, etc
-I also see that it has two commit but I cannot solve how to handle that so o leave it as it is.
-
-
-
-
-## part 2- 
+I also see that it has two commit but I cannot solve how to handle that so o leave it as it is.  
+ part 2- 
 
 
 
@@ -87,7 +83,7 @@ I have use 4 table and use only necessary things as columns. and also I cannot
 
 
 
-##Part 3-
+Part 3-
 
 
 import { Product, Warehouse, Inventory, Sale } from "../models/index.js";
@@ -98,14 +94,12 @@ const LOW_STOCK = 10;
 export const getLowStockAlerts = async (req, res) => {
   const companyId = req.params.companyId;
 
-  // define recent sales range
   const recentDate = new Date();
   recentDate.setDate(recentDate.getDate() - 30);
 
   const alerts = [];
 
   try {
-    // get inventory with product and warehouse info
     const inventoryList = await Inventory.findAll({
       include: [
         {
@@ -118,15 +112,12 @@ export const getLowStockAlerts = async (req, res) => {
       ]
     });
 
-    // loop through inventory records
     for (let item of inventoryList) {
 
-      // skip if stock is not low
       if (item.quantity >= LOW_STOCK) {
         continue;
       }
 
-      // check if product has recent sales
       const sale = await Sale.findOne({
         where: {
           product_id: item.product_id,
@@ -136,12 +127,10 @@ export const getLowStockAlerts = async (req, res) => {
         }
       });
 
-      // skip if no recent sales
       if (!sale) {
         continue;
       }
 
-      // add alert
       alerts.push({
         product_id: item.Product.id,
         product_name: item.Product.name,
