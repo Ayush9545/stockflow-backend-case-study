@@ -1,4 +1,4 @@
- #Part 1-
+# #Part 1-
 
 
 from decimal import Decimal
@@ -57,7 +57,7 @@ I also see that it has two commit but I cannot solve how to handle that so o lea
 
 
 
-# part 2- 
+## part 2- 
 
 
 
@@ -87,7 +87,7 @@ I have use 4 table and use only necessary things as columns. and also I cannot
 
 
 
-#Part 3-
+##Part 3-
 
 
 import { Product, Warehouse, Inventory, Sale } from "../models/index.js";
